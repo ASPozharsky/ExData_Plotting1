@@ -2,10 +2,11 @@
 
 source("read_data.R") #read data
 
+attach(data)
+
 png("plot2.png")
-plot(data$Global_active_power, type="l", xaxt="n",
+plot(Time, Global_active_power, type="l",
      ylab="Global Active Power (kilowatts)", xlab="")
-axis(1, at = c(1, nrow(data)/2, nrow(data)), 
-     labels=c("Thu", "Fri", "Sat"))
 dev.off()
-     
+
+detach(data)

@@ -7,28 +7,20 @@ attach(data)
 png("plot4.png")
 par(mfrow=c(2,2))
         # Plot 1
-plot(Global_active_power, type="l", xaxt="n",
+plot(Time, Global_active_power, type="l",
      ylab="Global Active Power (kilowatts)", xlab="")
-axis(1, at = c(1, nrow(data)/2, nrow(data)), 
-     labels=c("Thu", "Fri", "Sat"))
         # Plot 2
-plot(Voltage, type="l", xaxt="n", ylab="Voltage", xlab="datetime")
-axis(1, at = c(1, nrow(data)/2, nrow(data)), 
-     labels=c("Thu", "Fri", "Sat"))
+plot(Time, Voltage, type="l", ylab="Voltage", xlab="datetime")
         # Plot 3
-plot(Sub_metering_1, type="l", xaxt="n",
+plot(Time, Sub_metering_1, type="l",
      ylab="Energy sub metering", xlab="")
-lines(Sub_metering_2, col="orangered")
-lines(Sub_metering_3, col="blue")
-axis(1, at = c(1, nrow(data)/2, nrow(data)), 
-     labels=c("Thu", "Fri", "Sat"))
+lines(Time, Sub_metering_2, col="orangered")
+lines(Time, Sub_metering_3, col="blue")
 legend("topright", legend=c(paste("Sub_metering", 1:3, sep="_")),
        col=c("black", "orangered", "blue"), lty=1, bty="n")
         # Plot 4
-plot(Global_reactive_power, type="l", xaxt="n",
+plot(Time, Global_reactive_power, type="l",
      ylab="Global_reactive_power", xlab="datetime")
-axis(1, at = c(1, nrow(data)/2, nrow(data)), 
-     labels=c("Thu", "Fri", "Sat"))
 dev.off()
 
 detach(data)
